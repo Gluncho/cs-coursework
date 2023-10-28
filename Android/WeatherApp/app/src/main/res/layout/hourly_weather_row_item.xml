@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/row_item_height"
+    android:orientation="horizontal"
+    android:layout_gravity="center">
+    <TextView
+        android:id="@+id/row_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="alooooo"
+        android:textColor="@color/white"
+        android:textSize="@dimen/row_item_date_size"
+        android:layout_marginStart="@dimen/row_item_marginleft">
+    </TextView>
+    <ImageView
+        android:id="@+id/row_item_icon"
+        android:layout_width="@dimen/row_item_icon_size"
+        android:layout_height="@dimen/row_item_icon_size"
+        android:layout_marginStart="@dimen/row_item_marginleft"
+        android:layout_gravity="center"
+        android:src = "@drawable/georgia">
+    </ImageView>
+    <TextView
+        android:id="@+id/row_item_temp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize = "@dimen/row_item_tempsize"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text = "aloo"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/row_item_marginleft">
+    </TextView>
+    <TextView
+        android:id="@+id/row_item_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="scattered clouds"
+        android:textColor="@color/white"
+        android:textSize="@dimen/row_item_date_size"
+        android:layout_marginStart="@dimen/row_item_marginleft">
+    </TextView>
+</LinearLayout>

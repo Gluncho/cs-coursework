@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HourlyWeatherFragment">
+    <LinearLayout
+        android:id="@+id/top_section_images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/flag_top_margin"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/georgia"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:src="@drawable/georgia"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/uk"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:src="@drawable/uk"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/jamaica"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:src="@drawable/jamaica"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/location_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/picture_and_city_margin"
+        android:textSize="@dimen/weather_details_text_size"
+        android:textColor="@color/white"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recycler_view">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+</LinearLayout>

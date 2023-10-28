@@ -1,0 +1,46 @@
+function Main.main 3
+call Screen.clearScreen 0
+pop temp 0
+push constant 0
+push constant 0
+call Output.moveCursor 2
+pop temp 0
+label WHILE_EXP0
+push constant 0
+not
+not
+if-goto WHILE_END0
+call Random.new 0
+pop local 1
+push local 2
+push constant 0
+eq
+not
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 1
+push local 2
+call Random.setSeed 2
+pop temp 0
+label IF_FALSE0
+push local 1
+call AntGame.new 1
+pop local 0
+push local 2
+push local 0
+call AntGame.run 1
+add
+push constant 2
+add
+pop local 2
+push local 0
+call AntGame.dispose 1
+pop temp 0
+push local 1
+call Random.dispose 1
+pop temp 0
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

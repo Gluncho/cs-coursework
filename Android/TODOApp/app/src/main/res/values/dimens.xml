@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="editTextSize">18sp</dimen>
+    <dimen name="title_size">18sp</dimen>
+    <dimen name="textsize">14sp</dimen>
+    <dimen name="icon_size">20dp</dimen>
+    <dimen name="view_margin">16dp</dimen>
+    <dimen name="toolbar_height">50dp</dimen>
+    <dimen name="horizontal_spacing">16dp</dimen>
+    <dimen name="vertical_spacing">8dp</dimen>
+    <dimen name="todo_list_item_margin">8dp</dimen>
+    <dimen name="divider_margin">8dp</dimen>
+    <!-- Two times smaller than what we want,
+         so that we can set every item's margin to 8dp (the total margin of each of them will be 16).
+    !-->
+</resources>

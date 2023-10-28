@@ -1,0 +1,31 @@
+/* alo */
+class Random {
+  field int seed;
+  
+  constructor Random new() {
+    let seed = 2023;
+    return this;
+  }
+
+  method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+  }
+
+  method void setSeed(int newSeed) {
+    let seed = newSeed;
+    return;
+  }
+  
+  method int random(int n) {
+    let seed = mod(((seed * 25171) + 13841), 32749);
+    if(seed < 0){
+        let seed = seed + 32749;
+    }
+    return mod(seed, n);
+  }
+  
+  method int mod(int a, int b) {
+    return a - ((a / b) * b);
+  }
+}

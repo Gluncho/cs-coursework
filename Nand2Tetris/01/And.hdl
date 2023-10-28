@@ -1,0 +1,29 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/And.hdl
+// nand(a,b)
+// 0 0 1
+// 0 1 1
+// 1 0 1
+// 1 1 0
+// (a nand b) nand true
+
+// a nand false = !a
+// b nand false = !b
+// !a nand !b
+//
+/**
+ * And gate: 
+ * out = 1 if (a == 1 and b == 1)
+ *       0 otherwise
+ */
+
+CHIP And {
+    IN a, b;
+    OUT out;
+
+    PARTS:
+    Nand(a=a ,b=b ,out=k);
+    Nand(a=k, b=true, out=out);
+}

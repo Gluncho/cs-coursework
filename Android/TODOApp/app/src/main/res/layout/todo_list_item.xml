@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edittext_background"
+    android:orientation="vertical"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_columnWeight="1">
+
+    <TextView
+        android:id="@+id/todoName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/todo_list_item_margin"
+        android:textSize="@dimen/title_size"
+        android:maxLines="2"
+        android:ellipsize="end"/>
+
+    <CheckBox
+        android:id="@+id/item1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:layout_margin="@dimen/todo_list_item_margin"
+        android:textSize="@dimen/textsize"
+        android:visibility="gone"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:clickable="false"
+        android:focusable="false"/>
+
+    <CheckBox
+        android:id="@+id/item2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:layout_margin="@dimen/todo_list_item_margin"
+        android:textSize="@dimen/textsize"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:visibility="gone"
+        android:clickable="false"
+        android:focusable="false"/>
+
+    <CheckBox
+        android:id="@+id/item3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:layout_margin="@dimen/todo_list_item_margin"
+        android:textSize="@dimen/textsize"
+        android:visibility="gone"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:clickable="false"
+        android:focusable="false"/>
+    <TextView
+        android:id="@+id/moreUncheckedItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textsize"
+        android:visibility="gone"
+        android:layout_margin="@dimen/todo_list_item_margin"
+        android:text = "..."/>
+    <TextView
+        android:id="@+id/moreItems"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/todo_list_item_margin"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:textColor="@color/grey"/>
+</LinearLayout>
+
+
+

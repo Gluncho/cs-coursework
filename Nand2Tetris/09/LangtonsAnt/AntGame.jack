@@ -1,0 +1,133 @@
+/** Ant Game */
+
+class AntGame {
+    static int MAX_X, MAX_Y;
+    field Ant ant;
+    field Random rng;
+    field int steps;
+    field int state; // state = 0 if paused, state = 1 if not
+    /** Constructs a new Square Game. */
+    constructor AntGame new(Random rnd) {
+        // Creates a 30 by 30 pixels square and positions it at the top-left
+        // of the screen.
+        var int a;
+        let MAX_X = 512;
+        let MAX_Y = 256;
+        let rng = rnd;
+        return this;
+    }
+
+   /** Disposes this game. */
+    method void dispose() {
+        do rng.dispose();
+        do ant.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+    
+    method void restart(){
+        do Screen.clearScreen();
+        do Output.moveCursor(0, 0);
+        do Output.printString("Number of steps on the previous simulation:");
+        do Output.printInt(steps);
+        do Output.println();
+        return;
+    }
+
+    /** Returns the number of steps that ant did during one game*/
+    method int run() {
+        var char key;
+        let steps = 0;
+        let state = 0;
+        do readInput();
+        do Sys.wait(500); // wait a bit before clearing the screen
+        do Screen.clearScreen();
+        do Output.moveCursor(0, 0);
+        do ant.drawCurrentPixel(true);
+        let key = 0;
+        while(true){
+            let key = Keyboard.keyPressed();
+            if(key = 32){
+                while(~(key = 0)){
+                    do oneStep();
+                    let key = Keyboard.keyPressed();
+                }
+                let state = 1 - state;
+            }
+            if(key = 82){
+                while(~(key = 0)){
+                    do oneStep();
+                    let key = Keyboard.keyPressed();
+                }
+                do restart();
+                return steps;
+            }
+            do oneStep();
+        }
+        return steps;
+    }
+
+    method void oneStep(){
+        if(state = 1){
+            do ant.changeDirection();
+            do ant.flip();
+            do ant.move();
+            let steps = steps + 1;
+            // do Sys.wait(1); // wait a bit
+        }
+        return;
+    }
+    method void readInput(){
+        var string xStr,yStr, dirStr;
+        var int x,y, dir;
+        let dir = 1;
+        let xStr = Keyboard.readLine("Enter initial x coordinate:");
+        if (String.length(xStr) = 0) {
+            let x = rng.random(MAX_X);
+            do Output.printString("X coordinate randomized to value ");
+            do Output.printInt(x);
+            do Output.printString(".");
+            do Output.println();
+        }else{
+            let x = String.intValue(xStr);
+        }
+        let yStr = Keyboard.readLine("Enter initial y coordinate:");
+        if (String.length(yStr) = 0) {
+            let y = rng.random(MAX_Y);
+            do Output.printString("Y coordinate randomized to value ");
+            do Output.printInt(y);
+            do Output.printString(".");
+            do Output.println();
+        }else{
+            let y = String.intValue(yStr);
+        }
+        let dirStr = Keyboard.readLine("Enter initial direction (U, R, D, L):");
+        let dir = getDirection(dirStr);
+        let x = Math.min(x, MAX_X - 1);
+        let y = Math.min(y, MAX_Y - 1);
+
+        let ant = Ant.new(x, y, dir);
+        return;
+    }
+
+    method int getDirection(string dirStr){
+        if(String.length(dirStr) = 0){
+            do Output.printString("Initial direction will be UP by default.");
+            do Output.println();
+            return 0;
+        }
+        if(String.charAt(dirStr,0) = 85){
+            return 0;
+        }
+        if(String.charAt(dirStr,0) = 82){
+            return 1;
+        }
+        if(String.charAt(dirStr,0) = 68){
+            return 2;
+        }
+        if(String.charAt(dirStr,0) = 76){
+            return 3;
+        }
+        return 0;
+    }
+}

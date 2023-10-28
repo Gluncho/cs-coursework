@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    tools:context=".ItemDetailsActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height">
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:src="@drawable/ic_back"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@color/grey" />
+        <ImageButton
+            android:id="@+id/pinButton"
+            android:layout_width="@dimen/icon_size"
+            android:layout_height="@dimen/icon_size"
+            android:src="@drawable/ic_pin"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="@dimen/view_margin"
+            android:layout_gravity="end"
+            android:clickable="true"
+            android:focusable="true"
+            app:tint="@color/grey" />
+    </androidx.appcompat.widget.Toolbar>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="0dp"
+                android:textSize = "@dimen/title_size"
+                android:text="Type name here"
+                android:textColor="@color/grey"
+                android:backgroundTint="?android:colorBackground"
+                android:layout_marginLeft="@dimen/view_margin"
+                android:layout_marginRight="@dimen/view_margin">
+            </EditText>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginLeft="@dimen/view_margin"
+                android:layout_marginRight="@dimen/view_margin"
+                android:layout_marginBottom="@dimen/view_margin"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageButton
+                    android:id="@+id/addTodoButton"
+                    android:layout_width="@dimen/icon_size"
+                    android:layout_height="@dimen/icon_size"
+                    android:src="@drawable/ic_add"
+                    android:layout_marginStart="@dimen/view_margin"
+                    android:background="@android:color/transparent"
+                    android:scaleType="fitXY"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:tint="@color/grey" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/list_item"
+                    android:layout_marginStart="@dimen/todo_list_item_margin"
+                    android:textColor="@color/grey">
+                </TextView>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/divider"
+                android:layout_marginTop="@dimen/divider_margin" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/checkedRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/view_margin"
+                android:layout_marginEnd="@dimen/view_margin"
+                android:layout_marginTop="@dimen/divider_margin"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

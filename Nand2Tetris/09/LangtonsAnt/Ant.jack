@@ -1,0 +1,104 @@
+/** Implements a graphical square. */
+class Ant {
+    field int x, y; // screen location of the ant
+    field int direction; // direction of the ant
+    static Array mask;
+    static Array dx, dy;
+    /** Constructs a new ant with a given location and direction. */
+    constructor Ant new(int Ax, int Ay, int Adirection) {
+        var int i;
+        let x = Ax;
+        let y = Ay;
+        let direction = Adirection;
+        let dx = Array.new(4);
+        let dy = Array.new(4);
+        let dx[0] = 0;
+        let dy[0] = -1;
+        let dx[1] = 1;
+        let dy[1] = 0;
+        let dx[2] = 0;
+        let dy[2] = 1;
+        let dx[3] = -1;
+        let dy[3] = 0;
+        let mask = Array.new(16);
+        let mask[0]  = 1;
+        let i = 1;
+        while(~(i = 16)){
+            let mask[i] = mask[i-1] + mask[i-1];
+            let i = i + 1;
+        }
+        return this;
+    }
+
+    /** Disposes this ant. */
+    method void dispose() {
+        do mask.dispose();
+        do dx.dispose();
+        do dy.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void drawCurrentPixel(boolean color){
+        do Screen.setColor(color);
+        do Screen.drawPixel(x, y);
+        return;
+    }
+
+    method void changeDirection(){
+        var boolean color;
+        let color = getCurrentColor();
+        if(color){ // black
+            if(direction = 0){
+                let direction = 3;
+            }else{
+                let direction = direction - 1;
+            }
+        }else{
+            if(direction = 3){
+                let direction = 0;
+            }else{
+                let direction = direction + 1;
+            }
+        }
+        return;
+    }
+
+    method void flip(){
+        var boolean color;
+        let color = getCurrentColor();
+        do Screen.setColor(~color);
+        do Screen.drawPixel(x, y);
+        return;
+    }
+    method void move(){
+        let x = x + dx[direction];
+        let y = y + dy[direction];
+        if(x = 512) {
+            let x = 0;
+        }
+        if(x = -1){
+            let x = 511;
+        }
+        if(y = 256){
+            let y = 0;
+        }
+        if(y = -1){
+            let y = 255;
+        }
+        return;
+    }
+
+    method boolean getCurrentColor(){
+        var int addr, val, color, bit;
+        let bit = x - ((x/16) * 16);
+        let addr = 16384 + (32 * y) + (x / 16);
+        let val = Memory.peek(addr);
+        let color = (val & mask[bit]);
+        if(color) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+}

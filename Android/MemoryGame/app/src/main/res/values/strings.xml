@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Memory Game</string>
+    <string name="success_label_name">Success: 0</string>
+    <string name="fail_label_name">Fail: 0</string>
+    <string name="restart_name"> RESTART </string>
+</resources>
